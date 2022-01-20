@@ -670,12 +670,8 @@ class AudioService {
               break;
           }
         };
-        if (_testMode) {
-          MethodChannel('ryanheise.com/audioServiceInverse')
-              .setMockMethodCallHandler(handler);
-        } else {
           _channel.setMethodCallHandler(handler);
-        }
+
         if (AudioService.usesIsolate) {
           _customEventReceivePort = ReceivePort();
           _customEventSubscription = _customEventReceivePort!.listen((event) {
